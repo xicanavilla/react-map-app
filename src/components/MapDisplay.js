@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Map, InfoWindow, GoogleApiWrapper} from "google-maps-react";
+import NoMapDisplay from './NoMapDisplay'
 
 const MAP_KEY = "AIzaSyCORbF8B4Q4nTeYvzvOK1jKW7u6XAAljtE";
 const FS_CLIENT = "ZH10SZYREQM1CPGJAXD3UGNGWRPJ131KRHIVSNDCLGEH22RQ";
@@ -17,8 +18,33 @@ class MapDisplay extends Component {
   };
 
   componentDidMount = () => {
-
   }
+
+  componentWillReceiveProps = (props) => {
+    //marker pins will only drop once
+    this.setState({firstDrop: false});
+
+    if(this.state.markers.length !== props.locations.length) {
+      this.closeInfoWindow();
+      this.updateMarkers(props.locations);
+      this.setState({activeMarker:null});
+
+      return;
+    }
+
+    if(!props.selectedIndex || (this.state.activeMarker &&
+      (this.state.markers[props.selectedIndex] !== this.state.activeMarker))) {
+        this.closeInfoWindow();
+    }
+
+    //checks for a selected index
+    if(props.selectedIndex === null || typeof(props.selectedIndex) === "undefined") {
+      return;
+    };
+
+    this.onMarkerClick(this.state.markerProps[props.selectedIndex], this.state.markers[props.selectedIndex]);
+  }
+
 
   mapReady = (props, map) => {
     this.setState({map});
@@ -78,16 +104,10 @@ class MapDisplay extends Component {
         }
             else {
               marker.setAnimation(this.props.google.maps.Animation.BOUNCE);
-              this.setState({showingInfoWindow: true, activeMarker:marker, activeMarkerProps:props});
+              this.setState({showingInfoWindow: true, activeMarker:marker, activeMarkerProps});
             }
       })
     }
-
-  // var marker = new window.google.maps.Marker({
-  //     position: {lat: -34.397, lng:150.644},
-  //     map: map,
-  //     title: 'Hello World!'
-  //   });
 
   updateMarkers = (locations) => {
     if(!locations)
@@ -158,6 +178,16 @@ class MapDisplay extends Component {
                 <a href={amProps.url}>See Website</a>
               )
               : ""}
+            {amProps && amProps.images
+              ? (
+                  <div><img
+                    alt={amProps.name + " - food picture"}
+                    src={amProps.images.items[0].prefix + "100x100" + amProps.images.items[0].suffix}/>
+                    <p>Foursquare Image</p>
+                  </div>
+                )
+                : ""
+            }
           </div>
         </InfoWindow>
       </Map>
@@ -165,4 +195,4 @@ class MapDisplay extends Component {
   }
 }
 
-export default GoogleApiWrapper({apiKey: MAP_KEY})(MapDisplay)
+export default GoogleApiWrapper({apiKey: MAP_KEY, LoadingContainer: NoMapDisplay})(MapDisplay)

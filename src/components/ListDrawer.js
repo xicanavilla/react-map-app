@@ -29,7 +29,7 @@ class ListDrawer extends Component {
     },
     filterEntry: {
       border: "1px solid gray",
-      padding: "3px",
+      padding: "2px",
       margin: "30px 0px 10px",
       width: "100%"
     }
@@ -37,29 +37,30 @@ class ListDrawer extends Component {
 
   updateQuery = (newQuery) => {
     this.setState({query: newQuery});
+    this.props.filterLocations(newQuery);
   }
 
   render = () => {
     return (
       <div>
-        <Drawer open={this.props.open} onClose={this.props.toggle}>
-          <div style={this.styles.list}>
+        <Drawer open = {this.props.open} onClose = {this.props.toggle}>
+          <div style = {this.styles.list}>
             <input
-              style={this.styles.filterEntry}
-              type="text"
-              placeholder="filter"
-              name="filter"
-              onChange={e => this
+              style = {this.styles.filterEntry}
+              type = "text"
+              placeholder = "filter"
+              name = "filter"
+              onChange = {e => this
                 .updateQuery(e.target.value)}
-              value={this.state.query} />
+              value = {this.state.query} />
             <ul style = {this.styles.noBullets} >
               {this.props.locations && this
                 .props
                 .locations
-                .map((locations,index) => {
+                .map((location,index) => {
                   return (
-                    <li style={this.styles.listItem} key={index}>
-                      <button style={this.styles.listLink} key={index}>{locations.name}</button>
+                    <li style = {this.styles.listItem} key = {index} >
+                      <button style = {this.styles.listLink} key = {index} onClick = {e => this.props.clickListItem(index)} > {location.name} </button>
                     </li>
                   )
                 })}
