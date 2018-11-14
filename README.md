@@ -1,11 +1,11 @@
 
 ## Overview
 This project uses React along with a Foursquare and Google Maps API. External dependencies include:
-Google Maps
-Foursquare
-Font Awesome
-React Material-UI
-google-maps-react
+* Google Maps
+* Foursquare
+* Font Awesome
+* React Material-UI
+* google-maps-react
 
 ## Features
 The map includes some of my favorite places to eat lunch in Newark, NJ. These locations are stored in a list and displayed through markers on the map. When you click on a marker, an info box will appear with the restaurant name, website, and picture from foursquare (if available).
@@ -16,6 +16,6 @@ The standard create react app service worker has been enabled. It's only enabled
 
 ## Setup
 
-### Clone repo from https://github.com/xicanavilla/react-map-app.git
-### Run npm install
-### Run npm start 
+* Clone repo from https://github.com/xicanavilla/react-map-app.git
+* Run npm install
+* Run npm start
