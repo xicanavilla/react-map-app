@@ -19,4 +19,3 @@ The standard create react app service worker has been enabled. It's only enabled
 * Clone repo from https://github.com/xicanavilla/react-map-app.git
 * Run npm install
 * Run npm start
-* Run npm start 
