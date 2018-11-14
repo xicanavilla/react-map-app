@@ -6,7 +6,7 @@
     "state": "NJ",
     "zip": "07102",
     "url": "greenchicpea.com",
-    "pos": {"lat":40.740783, "lng":-74.171123 }
+    "pos": {"lat":40.740783, "lng":-74.171123}
   },
   {
     "name": "Dario's",
@@ -15,7 +15,7 @@
     "state": "NJ",
     "zip": "07102",
     "url": "dariosrestaurant.netwaiter.com",
-    "pos": {"lat":40.737627, "lng":-74.172616 }
+    "pos": {"lat":40.737627, "lng":-74.172616}
   },
   {
     "name": "Blaze Pizza ",
@@ -24,7 +24,7 @@
     "state": "NJ",
     "zip": "07102",
     "url": "blazepizza.com",
-    "pos": {"lat":40.738622, "lng":-74.170630 }
+    "pos": {"lat":40.738622, "lng":-74.170630}
   },
   {
     "name": "Chipotle",
@@ -33,7 +33,7 @@
     "state": "NJ",
     "zip": "07102",
     "url": "chipotle.com",
-    "pos": {"lat":40.735038, "lng":-74.170331 }
+    "pos": {"lat":40.735038, "lng":-74.170331}
   },
   {
     "name": "Tops Diner",
@@ -42,6 +42,6 @@
     "state": "NJ",
     "zip": "07029",
     "url": "thetopsdiner.com",
-    "pos": {"lat":40.750691, "lng":-74.163961 }
+    "pos": {"lat":40.750691, "lng":-74.163961}
   }
 ]
