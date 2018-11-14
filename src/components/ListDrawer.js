@@ -29,7 +29,7 @@ class ListDrawer extends Component {
     },
     filterEntry: {
       border: "1px solid gray",
-      padding: "2px",
+      padding: "2.5px",
       margin: "30px 0px 10px",
       width: "100%"
     }
