@@ -17,7 +17,12 @@ class MapDisplay extends Component {
     showingInfoWindow: false
   };
 
-  componentDidMount = () => {
+  componentDidMount() {
+      window.gm_authFailure = () => {
+        alert(
+          "Woops! Google Maps is having a hard time right now. Please try again later!"
+        );
+      };
   }
 
   componentWillReceiveProps = (props) => {
@@ -101,11 +106,17 @@ class MapDisplay extends Component {
               marker.setAnimation(this.props.google.maps.Animation.BOUNCE);
               this.setState({showingInfoWindow: true, activeMarker:marker, activeMarkerProps});
             })
+            .catch(error =>  {
+              alert("error" + error)
+            })
         }
             else {
               marker.setAnimation(this.props.google.maps.Animation.BOUNCE);
               this.setState({showingInfoWindow: true, activeMarker:marker, activeMarkerProps});
             }
+      })
+      .catch(error =>  {
+        alert("error" + error)
       })
     }
 
